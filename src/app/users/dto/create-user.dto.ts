@@ -33,7 +33,7 @@ export class CreateUserResponseData {
   user: UserEntity;
 
   @ApiProperty()
-  token: string;
+  token: Promise<string>;
 }
 
 export class CreateUserResponseDto
