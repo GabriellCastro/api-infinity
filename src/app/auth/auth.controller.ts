@@ -1,6 +1,7 @@
-import { Controller, Body } from '@nestjs/common';
+import { Controller, Body, UseGuards, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { Post } from '~/common/decorators/http-methods';
+import { AuthGuard } from '@nestjs/passport';
+import { Post, Get } from '~/common/decorators/http-methods';
 import {
   ApiConflictResponse,
   ApiCreatedResponse,
@@ -40,5 +41,11 @@ export class AuthController {
   async login(@Body() loginDto: LoginDto): Promise<LoginResponseData> {
     const res = await this.authService.login(loginDto);
     return res;
+  }
+
+  @Get('me', { okType: LoginResponseData })
+  @UseGuards(AuthGuard('jwt'))
+  getMe(@Request() req) {
+    return req.user;
   }
 }
