@@ -7,6 +7,9 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: infinity_db
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - pg-db:/var/lib/postgresql/data
     ports:
       - '5432:5432'
+
+volumes:
+  pg-db:
