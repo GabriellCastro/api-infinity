@@ -26,11 +26,13 @@ export class UsersService {
     return userCreated;
   }
 
-  findAll() {
-    return `This action returns all users`;
-  }
+  async findOne(email: string) {
+    const user = await this.userRepository.find(email);
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+    if (!user) {
+      throw new HttpException('Usuário não encontrado!', HttpStatus.NOT_FOUND);
+    }
+
+    return user;
   }
 }
