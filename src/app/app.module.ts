@@ -15,7 +15,7 @@ import { UsersModule } from './users/users.module';
     CacheModule.register({ isGlobal: true }),
     JwtModule.register({
       global: true,
-      secret: process.env.CLIENT_JWT_SECRET,
+      secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '3d' },
     }),
     AuthModule,
