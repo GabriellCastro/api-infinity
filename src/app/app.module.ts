@@ -6,6 +6,8 @@ import { ValidationErrorFilter } from '~/filters/validation/validation-error.fil
 import { HttpExceptionFilter } from '~/filters/http/http-exception.filter';
 import { ResponseInterceptor } from '~/interceptors/response/response.interceptor';
 import { JwtModule } from '@nestjs/jwt';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -16,6 +18,8 @@ import { JwtModule } from '@nestjs/jwt';
       secret: process.env.CLIENT_JWT_SECRET,
       signOptions: { expiresIn: '3d' },
     }),
+    AuthModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [
