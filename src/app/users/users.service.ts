@@ -35,4 +35,17 @@ export class UsersService {
 
     return user;
   }
+
+  async findAll(): Promise<UserEntity[]> {
+    const users = await this.userRepository.findAll();
+
+    if (!users) {
+      throw new HttpException(
+        'Usuários não encontrados!',
+        HttpStatus.NOT_FOUND,
+      );
+    }
+
+    return users;
+  }
 }

@@ -8,6 +8,7 @@ import { ResponseInterceptor } from '~/interceptors/response/response.intercepto
 import { JwtModule } from '@nestjs/jwt';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { TasksModule } from './tasks/tasks.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { UsersModule } from './users/users.module';
     }),
     AuthModule,
     UsersModule,
+    TasksModule,
   ],
   controllers: [],
   providers: [

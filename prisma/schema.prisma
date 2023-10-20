@@ -11,20 +11,21 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String?
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  tasks     Task[]
+  id           String   @id @default(uuid())
+  email        String   @unique
+  name         String?
+  password     String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  tasksCreator Task[]   @relation("creator")
+  tasks        Task[]
 }
 
 enum TaskStatus {
   TODO
   IN_PROGRESS
-  COMPLETED
-  CANCELED
+  REVIEW
+  DONE
 }
 
 model Task {
@@ -34,6 +35,8 @@ model Task {
   status      TaskStatus
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
-  userId      String
-  user        User       @relation(fields: [userId], references: [id])
+  userId      String?
+  user        User?      @relation(fields: [userId], references: [id])
+  creatorId   String?
+  creator     User?      @relation("creator", fields: [creatorId], references: [id])
 }
