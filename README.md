@@ -16,6 +16,7 @@ The following technologies were used in the project:
 - [JWT](https://jwt.io)
 - [Postgres](https://www.postgresql.org/)
 - [PrismaORM](https://www.prisma.io/)
+- [Swagger](https://swagger.io)
 
 
 ## :white_check_mark: Requirements ##
@@ -47,6 +48,9 @@ $ yarn prisma migrate dev
 
 # To start the application
 $ yarn dev
+
+# Acess doc api
+$ http://localhost:3001/docs
 
 ```
 
